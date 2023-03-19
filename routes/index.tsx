@@ -109,7 +109,8 @@ export function isAbsolute(url: string) {
 }
 
 export function getUrl(item: Item) {
-  return item.url && isAbsolute(item.url) ? item.url : `/item?id=${item.id}`;
+  // return item.url && isAbsolute(item.url) ? item.url : `/item?id=${item.id}`;
+  return item.id && `/item?id=${item.id}`;
 }
 
 export function NewsItem({ item }: { item: Item }) {
