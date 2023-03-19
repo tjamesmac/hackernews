@@ -115,9 +115,10 @@ export function getUrl(item: Item) {
 export function NewsItem({ item }: { item: Item }) {
   return (
     <li class="text-1xl p-2 hover:text-blue-700">
-      <span class="text-blue-300">{item.points}</span>
+      
       <a class="p-2" href={getUrl(item)}>{item.title}</a>{" "}
       <span class="text-blue-300">{item.user}</span>
+      <span class="text-blue-300">{item.points}</span>
       <span class="text-blue-300">{item.comments_count}</span>
     </li>
   );
