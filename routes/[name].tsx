@@ -22,7 +22,7 @@ export const handler: Handlers<Item> = {
 
 export default function Greet(props: PageProps) {
   const { data } = props;
-
+  console.log(data, "what is this data?");
   return (
     <>
       <h1 class="text-9xl">{data.title}</h1>
