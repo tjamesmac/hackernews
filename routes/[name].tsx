@@ -24,7 +24,7 @@ function Comment({ data }) {
   return (
     <li>
       {data.content && <p>{data.content}</p>}
-      {data.author && <span>{data.author}</span>}
+      {data.user && <span>{data.user}</span>}
     </li>
   )
 }
