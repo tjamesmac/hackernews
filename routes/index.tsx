@@ -113,6 +113,7 @@ export function getUrl(item: Item) {
 }
 
 export function NewsItem({ item }: { item: Item }) {
+  console.log(item, "what we got");
   return (
     <li class="text-1xl p-2 hover:text-blue-700">
       
