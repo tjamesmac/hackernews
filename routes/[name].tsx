@@ -20,12 +20,27 @@ export const handler: Handlers<Item> = {
   },
 };
 
+function Comment({ data }) {
+  return (
+    <li>
+      {data.content && <p>{data.content}</p>}
+      {data.author && <span>{data.author}</span>}
+    </li>
+  )
+}
+
 export default function Greet(props: PageProps) {
   const { data } = props;
   console.log(data, "what is this data?");
   return (
     <>
-      <h1 class="text-9xl">{data.title}</h1>
+      <h1 class="text-5xl">{data.title}</h1>
+      {data.content && <p>{data.content}</p>}
+      <ul>
+        {data.comments.length > 0 && data.comments.map((comment) => {
+          return <Comment data={comment} />
+        })}
+      </ul>
     </>
   );
 }
