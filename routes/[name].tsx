@@ -1,3 +1,4 @@
+import { Html5Entities } from "https://deno.land/x/html_entities/mod.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { fetchItem } from "./index.tsx";
 
@@ -21,8 +22,7 @@ export const handler: Handlers<Item> = {
 };
 
 function htmlDecode(input) {
-  var doc = new DOMParser().parseFromString(input, "text/html");
-  return doc.documentElement.textContent;
+  return Html5Entities.decode(input);
 }
 
 function Comment({ data }) {
