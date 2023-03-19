@@ -98,6 +98,7 @@ export default function Home(props: PageProps<Item[]>) {
           {data.map((item: Item) => <NewsItem item={item} />)}
         </ul>
       </div>
+      <div>mobile test</div>
       <Footer />
     </>
   );
