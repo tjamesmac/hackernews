@@ -1,4 +1,4 @@
-import { Html5Entities } from "https://deno.land/x/html_entities/mod.ts";
+import { Html5Entities } from "https://deno.land/x/html_entities@v1.0/mod.js";
 import { Handlers, PageProps } from "$fresh/server.ts";
 import { fetchItem } from "./index.tsx";
 
@@ -26,12 +26,13 @@ function htmlDecode(input) {
 }
 
 function Comment({ data }) {
+  console.log(htmlDecode(data.content));
   return (
     <li>
       {data.content && <p>{htmlDecode(data.content)}</p>}
       {data.user && <span>{data.user}</span>}
     </li>
-  )
+  );
 }
 
 export default function Greet(props: PageProps) {
@@ -43,7 +44,7 @@ export default function Greet(props: PageProps) {
       {data.content && <p>{data.content}</p>}
       <ul>
         {data.comments.length > 0 && data.comments.map((comment) => {
-          return <Comment data={comment} />
+          return <Comment data={comment} />;
         })}
       </ul>
     </>
