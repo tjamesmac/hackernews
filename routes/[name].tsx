@@ -36,7 +36,7 @@ function Comment({ data }) {
 
 export default function Greet(props: PageProps) {
   const { data } = props;
-  console.log(data, "what is this data?");
+
   return (
     <>
       <h1 class="text-5xl">{data.title}</h1>
