@@ -20,10 +20,23 @@ export const handler: Handlers<Item> = {
   },
 };
 
+function sanitize(string) {
+  const map = {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;',
+      "/": '&#x2F;',
+  };
+  const reg = /[&<>"'/]/ig;
+  return string.replace(reg, (match)=>(map[match]));
+}
+
 function Comment({ data }) {
   return (
     <li>
-      {data.content && <p>{data.content}</p>}
+      {data.content && <p>{sanitize(data.content)}</p>}
       {data.user && <span>{data.user}</span>}
     </li>
   )
