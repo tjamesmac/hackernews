@@ -29,7 +29,7 @@ function Comment({ data }) {
   console.log(htmlDecode(data.content));
   return (
     <li>
-      {data.content && <p>{htmlDecode(data.content)}</p>}
+      {data.content && <p class="pt-5">{htmlDecode(data.content)}</p>}
       {data.user && <span>{data.user}</span>}
     </li>
   );
@@ -41,7 +41,7 @@ export default function Greet(props: PageProps) {
   return (
     <>
       <h1 class="text-5xl">{data.title}</h1>
-      {data.content && <p>{data.content}</p>}
+      {data.content && <p class="pt-5">{htmlDecode(data.content)}</p>}
       <ul>
         {data.comments.length > 0 && data.comments.map((comment) => {
           return <Comment data={comment} />;
