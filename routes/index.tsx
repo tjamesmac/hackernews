@@ -3,6 +3,7 @@ import { Head } from "$fresh/runtime.ts";
 
 import Header from "../components/Header.tsx";
 import Footer from "../components/Footer.tsx";
+import { Layout } from "../components/Layout.tsx";
 
 const API_BASE = "https://hacker-news.firebaseio.com/v0";
 
@@ -88,19 +89,18 @@ export async function fetchItem(
 export default function Home(props: PageProps<Item[]>) {
   const { data } = props;
   return (
-    <>
+    <Layout>
       <Head>
         <title>The News</title>
       </Head>
       <Header active="/" />
-      <div class="p-4 mx-auto max-w-screen-lg">
-        <ul class="flex flex-col gap-1">
+      <div class="p-2 mx-auto max-w-screen-lg">
+        <ul class="flex flex-col gap-3">
           {data.map((item: Item) => <NewsItem item={item} />)}
         </ul>
       </div>
-      <div>mobile test</div>
-      <Footer />
-    </>
+      {/* <Footer /> */}
+    </Layout>
   );
 }
 
@@ -114,14 +114,20 @@ export function getUrl(item: Item) {
 }
 
 export function NewsItem({ item }: { item: Item }) {
-  console.log(item, "what we got");
   return (
-    <li class="text-1xl p-2 hover:text-blue-700">
-      
-      <a class="p-2" href={getUrl(item)}>{item.title}</a>{" "}
-      <span class="text-blue-300">{item.user}</span>
-      <span class="text-blue-300">{item.points}</span>
-      <span class="text-blue-300">{item.comments_count}</span>
+    <li class="text-1xl hover:text-blue-700">
+      <a href={getUrl(item)}>{item.title}</a>
+      <div class="flex flex-row gap-2">
+        {item.points && <span class="text-blue-300">{item.points} points</span>}
+        {item.user && <span class="text-blue-300">{item.user}</span>}
+        {item.comments_count && (
+          <span class="text-blue-300">
+            {`${item.comments_count} ${
+              item.comments_count < 2 ? "comment" : "comments"
+            }`}
+          </span>
+        )}
+      </div>
     </li>
   );
 }
